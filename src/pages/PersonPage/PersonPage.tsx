@@ -1,23 +1,23 @@
 import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
 import { PageLayout } from "@shared/ui";
-import { segments } from "./MainPage.constants";
-import { Content, TabsStyled } from "./MainPage.styles";
-import { ISegment } from "./MainPage.interfaces";
+import { segments, TEXTS } from "./PersonPage.constants";
+import { Content, TabsStyled } from "./PersonPage.styles";
 
-export const MainPage: FC = observer(() => {
-  const [segment, setSegment] = useState<ISegment>(segments[0]);
-
+export const PersonPage: FC = observer(() => {
+  const [segmentName, setSegmentName] = useState<string>(
+    segments && segments[0].label
+  );
   const onChange = (tabKey: string) => {
     const currentSegment = segments?.find(({ key }) => key === tabKey);
-
-    if (currentSegment) {
-      setSegment(currentSegment);
-    }
+    setSegmentName(currentSegment?.label);
   };
 
   return (
-    <PageLayout title={segment.title}>
+    <PageLayout
+      title={` ${segmentName + TEXTS.title + "sds"}`}
+      withNavigationHome={true}
+    >
       <Content>
         <TabsStyled
           defaultActiveKey="1"
@@ -25,7 +25,6 @@ export const MainPage: FC = observer(() => {
           items={segments}
           onChange={onChange}
         />
-        {segment.button}
       </Content>
     </PageLayout>
   );

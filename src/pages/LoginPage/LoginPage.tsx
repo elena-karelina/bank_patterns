@@ -4,18 +4,31 @@ import type { FormProps } from "antd";
 import { Button, Form, Input } from "antd";
 import { Wrapper } from "./LoginPage.styles";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "@entities/User/hooks/useLogin/useLogin";
 
 type FieldType = {
-  username?: string;
-  password?: string;
+  phone: string;
+  password: string;
 };
 
 export const LoginPage: FC = () => {
   const navigate = useNavigate();
+  const { mutate } = useLogin();
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    navigate("/main");
     console.log("Success:", values);
+    mutate(
+      { phone: values.phone, password: values.password }, // Передаем данные формы
+      {
+        onSuccess: () => {
+          console.log("Данные успешно отправлены");
+          navigate("/main");
+        },
+        onError: (error) => {
+          console.error("Ошибка:", error);
+        },
+      }
+    );
   };
 
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
@@ -37,7 +50,7 @@ export const LoginPage: FC = () => {
         >
           <Form.Item<FieldType>
             label="Телефон"
-            name="username"
+            name="phone"
             rules={[{ required: true, message: "Введите телефон" }]}
           >
             <Input />

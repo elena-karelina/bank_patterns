@@ -1,4 +1,4 @@
-import { RightOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, RightOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -12,6 +12,15 @@ export const Wrapper = styled.div`
   &:hover {
     background-color: #ededed;
   }
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+export const CloseCircleOutlinedStyled = styled(CloseCircleOutlined)`
+  font-size: 20px;
 `;
 
 export const Icon = styled(RightOutlined)`

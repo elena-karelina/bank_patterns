@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Modal } from "antd";
 import { FC } from "react";
 
-export const CreateAccount: FC = () => {
+export const CreateUser: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -20,7 +20,7 @@ export const CreateAccount: FC = () => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Создать счет
+        Создать пользователя
       </Button>
       <Modal
         title="Введите данные"

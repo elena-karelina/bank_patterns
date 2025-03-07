@@ -7,6 +7,7 @@ import { Image, Wrapper } from "./Page.styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AccountDetailsPage } from "@pages/AccountDetailsPage";
 import { LoginPage } from "@pages/LoginPage";
+import { PersonPage } from "@pages/PersonPage";
 
 export const Page: FC = observer(() => {
   return (
@@ -14,6 +15,7 @@ export const Page: FC = observer(() => {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/person" element={<PersonPage />} />
         <Route path="/details" element={<AccountDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

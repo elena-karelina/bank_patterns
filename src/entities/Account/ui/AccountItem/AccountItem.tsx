@@ -1,16 +1,28 @@
 import { FC } from "react";
-import { Icon, Wrapper } from "./AccountItem.styles";
+import {
+  CloseCircleOutlinedStyled,
+  Icon,
+  TitleWrapper,
+  Wrapper,
+} from "./AccountItem.styles";
 import { TitleStyled } from "../../../../shared/ui";
 import { IAccountItemProps } from "./AccountItem.interfaces";
 
-export const AccountItem: FC<IAccountItemProps> = ({ onClick }) => {
+export const AccountItem: FC<IAccountItemProps> = ({
+  onClick,
+  isBlocked = false,
+}) => {
   const handleClick = (): void => {
     onClick?.();
   };
 
   return (
     <Wrapper onClick={handleClick}>
-      <TitleStyled level={4}>SDS</TitleStyled>
+      <TitleWrapper>
+        <TitleStyled level={4}>SDS</TitleStyled>
+        {isBlocked && <CloseCircleOutlinedStyled />}
+      </TitleWrapper>
+
       <Icon />
     </Wrapper>
   );
