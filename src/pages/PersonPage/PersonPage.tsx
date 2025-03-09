@@ -9,9 +9,11 @@ export const PersonPage: FC = observer(() => {
   const {
     userStore: { clickedPerson },
   } = useStores();
+
   const [segmentName, setSegmentName] = useState<string>(
     segments && segments[0].label
   );
+
   const onChange = (tabKey: string) => {
     const currentSegment = segments?.find(({ key }) => key === tabKey);
     setSegmentName(currentSegment?.label);

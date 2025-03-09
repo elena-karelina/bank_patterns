@@ -1,5 +1,6 @@
+import { IUser } from "@entities/User/models";
+
 export interface IUserItemProps {
-  isBlocked?: boolean;
-  name: string;
-  id: string;
+  data: IUser;
+  isEmployee: boolean;
 }

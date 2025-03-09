@@ -30,7 +30,7 @@ export const EmployeeItemsList: FC<EmployeeItemsListProps> = observer(
       <div className={className}>
         {employeeList?.map((item, index) => (
           <div key={index}>
-            <UserItem data={item} />
+            <UserItem data={item} isEmployee={true} />
             {index < employeeList.length - 1 && <Divider />}
           </div>
         ))}

@@ -8,9 +8,9 @@ import { useStores } from "@shared/contexts/stores";
 import { UnbanButton } from "@widgets/UnbanButton";
 import { useUnbanUser } from "@widgets/UnbanButton/hooks";
 import { useNavigate } from "react-router-dom";
-import { IUser } from "@entities/User/models";
+import { IUserItemProps } from "./UserItem.interfaces";
 
-export const UserItem: FC<{ data: IUser }> = ({ data }) => {
+export const UserItem: FC<IUserItemProps> = ({ data, isEmployee }) => {
   const { isBanned, fullName, id } = data;
   const [isBan, setIsBan] = useState(isBanned);
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ export const UserItem: FC<{ data: IUser }> = ({ data }) => {
   };
 
   return (
-    <Wrapper onClick={handleClick} id={id}>
+    <Wrapper onClick={isEmployee ? null : handleClick} id={id}>
       <BlockWrapper>
         <TitleStyled level={4}>{fullName}</TitleStyled>
         {isBan && <BlockedTag />}
@@ -60,7 +60,7 @@ export const UserItem: FC<{ data: IUser }> = ({ data }) => {
         ) : (
           <BanButton onClick={handleBanClick} />
         )}
-        <Icon />
+        {!isEmployee && <Icon />}
       </BlockWrapper>
     </Wrapper>
   );

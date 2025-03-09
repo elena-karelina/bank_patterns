@@ -1,4 +1,6 @@
+import { IAccount } from "@entities/Account/models";
+
 export interface IAccountItemProps {
   onClick?: () => void;
-  isBlocked?: boolean;
+  data: IAccount;
 }

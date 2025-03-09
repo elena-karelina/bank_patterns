@@ -23,6 +23,7 @@ export const CreditRateList: FC<CreditRateListProps> = observer(
     if (status === "pending") {
       return <CreditRateListShimmer />;
     }
+
     console.log(rateItems);
     return (
       <div className={className}>

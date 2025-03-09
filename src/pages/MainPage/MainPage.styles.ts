@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AccountItemsList } from "@widgets/AccountItemsList";
+import { AccountItemsList } from "@widgets/AccountItemsList/ui";
 import { Tabs } from "antd";
 
 export const AccountItemsListStyled = styled(AccountItemsList)`
