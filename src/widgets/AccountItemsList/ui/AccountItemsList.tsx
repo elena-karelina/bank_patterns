@@ -1,25 +1,26 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { AccountItem } from "@entities/Account/ui";
 import { Divider, ItemListShimmer } from "@shared/ui";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AccountItemsListProps } from "./AccountItemsList.interfaces";
 import { useAccountList } from "../hooks";
+import { useStores } from "@shared/contexts/stores";
 
-export const AccountItemsList: FC<AccountItemsListProps> = ({
-  className,
-  url,
-}) => {
-  const navigate = useNavigate();
+export const AccountItemsList: FC<AccountItemsListProps> = ({ className }) => {
   const { id } = useParams();
+  const {
+    accountStore: { setAccountList, accountList },
+  } = useStores();
+  const { status, data: accountItems } = useAccountList(id as string);
 
-  const { status, data: accountList } = useAccountList(id as string);
+  console.log(status, accountItems);
+  console.log(accountItems?.length === 0);
 
-  console.log(status, accountList);
-  console.log(accountList?.length === 0);
-
-  const handleClick = () => {
-    navigate(url);
-  };
+  useEffect(() => {
+    if (accountItems) {
+      setAccountList(accountItems);
+    }
+  }, [accountItems, setAccountList]);
 
   if (status === "pending") {
     return <ItemListShimmer />;
@@ -28,12 +29,11 @@ export const AccountItemsList: FC<AccountItemsListProps> = ({
   if (!accountList || accountList.length === 0) {
     return <div className={className}>счетов нет</div>;
   }
-
   return (
     <div className={className}>
       {accountList?.map((item, index) => (
         <div key={index}>
-          <AccountItem data={item} onClick={handleClick} />
+          <AccountItem data={item} />
           {index < accountList.length - 1 && <Divider />}
         </div>
       ))}

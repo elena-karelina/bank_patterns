@@ -1,3 +1,5 @@
+import { ITransaction } from "@shared/types";
+
 export interface IAccount {
   id: string;
   name: string;
@@ -5,4 +7,5 @@ export interface IAccount {
   createdDate: string;
   status: string;
   balance: number;
+  transactions?: ITransaction[];
 }

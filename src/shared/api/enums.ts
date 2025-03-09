@@ -7,4 +7,5 @@ export enum EQueryKeys {
   CreateEmployee = "create-employee",
   BanUser = "ban-user",
   AccountList = "account-list",
+  TransactionHistory = "transaction-history",
 }

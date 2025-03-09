@@ -19,7 +19,7 @@ export const Page: FC = observer(() => {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/person/:id" element={<PersonPage />} />
-        <Route path="/details" element={<AccountDetailsPage />} />
+        <Route path="/details/:id" element={<AccountDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
       <Image src={meerkat} />

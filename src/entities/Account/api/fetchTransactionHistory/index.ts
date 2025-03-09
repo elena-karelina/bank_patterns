@@ -1,2 +1,1 @@
-export { fetchAccountList } from "./fetchAccountList";
 export { fetchTransactionHistory } from "./fetchTransactionHistory";

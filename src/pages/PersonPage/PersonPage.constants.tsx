@@ -14,7 +14,7 @@ export const segments: TabsProps["items"] = [
     key: "1",
     children: (
       <SegmentContentWrapper>
-        <AccountItemsListStyled url="/details" />
+        <AccountItemsListStyled />
       </SegmentContentWrapper>
     ),
   },
