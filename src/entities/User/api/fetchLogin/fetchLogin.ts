@@ -1,4 +1,5 @@
-import { ILoginData } from "@entities/User/models";
+import { ILoginData } from "@entities/User/models/types/index";
+import { ILoginResult } from "./fetchLogin.interfaces";
 
 export const fetchLogin = async ({
   phone,
@@ -22,8 +23,9 @@ export const fetchLogin = async ({
     throw new Error("error");
   }
 
-  const token: string = await response.json();
-  localStorage.setItem("togen", token);
+  const data: ILoginResult = await response.json();
+  console.log(data);
+  localStorage.setItem("token", data.auth);
 
-  return token;
+  return data.auth;
 };

@@ -1,9 +1,9 @@
 export interface ICredit {
   id: string;
   name: string;
-  rate: number;
+  yearlyRate: number;
 }
 export interface ICreateCredit {
   name: string;
-  rate: number;
+  yearlyRate: number;
 }

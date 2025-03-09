@@ -1,3 +1,6 @@
 export enum EAppStage {
-  ChtoTo,
+  MainPage = "/main",
+  LoginPage = "/login",
+  PersonPage = "/person",
+  AccountDetailsPage = "/details",
 }

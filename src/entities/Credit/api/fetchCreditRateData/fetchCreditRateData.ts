@@ -9,7 +9,7 @@ export const fetchCreditRateData =
       method: "GET",
       headers: {
         Accept: "text/plain",
-        Authorization: token ? `Bearer ${token}` : "",
+        Authorization: `Bearer ${token}`,
       },
     });
 

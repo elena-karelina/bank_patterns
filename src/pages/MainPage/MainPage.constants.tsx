@@ -1,12 +1,11 @@
-import {
-  AccountItemsListStyled,
-  SegmentContentWrapper,
-} from "./MainPage.styles";
+import { SegmentContentWrapper } from "./MainPage.styles";
 import { CreateEmployee } from "@widgets/CreateEmployee";
-import { CreateUser } from "@widgets/CreateUser";
+import { CreateUser } from "@widgets/CreateUser/ui";
 import { CreateCreditRate } from "@widgets/CreateCreditRate/ui/CreateCreditRate";
 import { CreditRateList } from "@widgets/CreditRateList";
 import { ISegment } from "./MainPage.interfaces";
+import { EmployeeItemsList } from "@widgets/EmployeeItemsList/EmployeeItemsList";
+import { UserItemsList } from "@widgets/UserItemsList";
 
 export const segments: ISegment[] = [
   {
@@ -15,7 +14,7 @@ export const segments: ISegment[] = [
     key: "1",
     children: (
       <SegmentContentWrapper>
-        <AccountItemsListStyled url="/person" />
+        <EmployeeItemsList />
       </SegmentContentWrapper>
     ),
     button: <CreateEmployee />,
@@ -24,7 +23,11 @@ export const segments: ISegment[] = [
     label: "Пользователи",
     title: "Пользователи",
     key: "2",
-    children: <SegmentContentWrapper>`dd`</SegmentContentWrapper>,
+    children: (
+      <SegmentContentWrapper>
+        <UserItemsList />
+      </SegmentContentWrapper>
+    ),
     button: <CreateUser />,
   },
   {

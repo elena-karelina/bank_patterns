@@ -10,12 +10,15 @@ import { LoginPage } from "@pages/LoginPage";
 import { PersonPage } from "@pages/PersonPage";
 
 export const Page: FC = observer(() => {
+  // const {
+  //   routingStore: { appStage },
+  // } = useStores();
   return (
     <Wrapper>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/main" element={<MainPage />} />
-        <Route path="/person" element={<PersonPage />} />
+        <Route path="/person/:id" element={<PersonPage />} />
         <Route path="/details" element={<AccountDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

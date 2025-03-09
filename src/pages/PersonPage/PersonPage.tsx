@@ -3,8 +3,12 @@ import { FC, useState } from "react";
 import { PageLayout } from "@shared/ui";
 import { segments, TEXTS } from "./PersonPage.constants";
 import { Content, TabsStyled } from "./PersonPage.styles";
+import { useStores } from "@shared/contexts/stores";
 
 export const PersonPage: FC = observer(() => {
+  const {
+    userStore: { clickedPerson },
+  } = useStores();
   const [segmentName, setSegmentName] = useState<string>(
     segments && segments[0].label
   );
@@ -15,7 +19,7 @@ export const PersonPage: FC = observer(() => {
 
   return (
     <PageLayout
-      title={` ${segmentName + TEXTS.title + "sds"}`}
+      title={` ${segmentName + TEXTS.title + clickedPerson?.fullName}`}
       withNavigationHome={true}
     >
       <Content>

@@ -2,8 +2,12 @@ import { useState } from "react";
 import { Button, Form, FormProps, Input, Modal } from "antd";
 import { FC } from "react";
 import { useCreateCreditRate } from "../../hooks";
+import { useStores } from "@shared/contexts/stores";
 
 export const CreateCreditRate: FC = () => {
+  const {
+    rateStore: { addRate },
+  } = useStores();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mutate } = useCreateCreditRate();
 
@@ -23,16 +27,18 @@ export const CreateCreditRate: FC = () => {
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
     mutate(
-      { name: values.name, rate: values.rate }, // Передаем данные формы
+      { name: values.name, yearlyRate: values.rate }, // Передаем данные формы
       {
-        onSuccess: () => {
+        onSuccess: (id) => {
           console.log("Данные успешно отправлены");
+          addRate({ name: values.name, yearlyRate: values.rate, id });
         },
         onError: (error) => {
           console.error("Ошибка:", error);
         },
       }
     );
+    setIsModalOpen(false);
   };
 
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
