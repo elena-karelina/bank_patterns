@@ -11,6 +11,7 @@ export const CreateAccount: FC = () => {
   const {
     accountStore: { addAccount },
   } = useStores();
+
   type FieldType = {
     name: string;
   };

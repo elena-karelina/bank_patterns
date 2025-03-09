@@ -6,7 +6,7 @@ export const fetchLogin = async ({
   password,
 }: ILoginData): Promise<string> => {
   const url = `http://51.250.46.120:5003/api/user/login`;
-
+  console.log(phone, password);
   const response = await fetch(url, {
     method: "Post",
     headers: {

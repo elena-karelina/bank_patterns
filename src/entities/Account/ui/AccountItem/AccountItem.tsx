@@ -4,7 +4,7 @@ import { TitleStyled } from "@shared/ui";
 import { IAccountItemProps } from "./AccountItem.interfaces";
 import { useNavigate } from "react-router-dom";
 import { useStores } from "@shared/contexts/stores";
-import { BlockedTag } from "../BlockedTag";
+import { ClosedTag } from "../ClosedTag";
 import { CloseAccountButton } from "@widgets/CloseAccountButton";
 import { observer } from "mobx-react-lite";
 
@@ -23,7 +23,7 @@ export const AccountItem: FC<IAccountItemProps> = observer(({ data }) => {
     <Wrapper onClick={handleClick}>
       <Block>
         <TitleStyled level={4}>{data.name}</TitleStyled>
-        {data.status === "Closed" && <BlockedTag />}
+        {data.status === "Closed" && <ClosedTag />}
       </Block>
       <div>
         {data.status !== "Closed" && <CloseAccountButton id={data.id} />}

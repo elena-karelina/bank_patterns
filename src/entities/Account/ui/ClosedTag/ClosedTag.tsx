@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { CloseCircleOutlinedStyled, Wrapper } from "./BlockedTag.styles";
+import { CloseCircleOutlinedStyled, Wrapper } from "./ClosedTag.styles";
 
-export const BlockedTag: FC = () => {
+export const ClosedTag: FC = () => {
   return (
     <Wrapper>
       Закрыт <CloseCircleOutlinedStyled />

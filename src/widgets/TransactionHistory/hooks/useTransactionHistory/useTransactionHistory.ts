@@ -8,5 +8,5 @@ export const useTransactionHistory = (
 ): UseQueryResult<ITransaction[]> =>
   useQuery({
     queryFn: () => fetchTransactionHistory(id),
-    queryKey: [EQueryKeys.AccontList, id],
+    queryKey: [EQueryKeys.TransactionHistory, id],
   });

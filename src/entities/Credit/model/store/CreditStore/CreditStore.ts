@@ -1,13 +1,18 @@
 import { action, makeAutoObservable } from "mobx";
-import { ICredit } from "../../types";
+import { ICredit, ICreditRate } from "../../types";
 
 export class CreditStore {
   public creditList: ICredit[] | undefined;
+  public rateList: ICreditRate[] | undefined;
   public clickedCredit: ICredit | undefined;
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  public setCreditRateList = action((rateList: ICreditRate[]): void => {
+    this.rateList = rateList;
+  });
 
   public setCreditList = action((creditList: ICredit[]): void => {
     this.creditList = creditList;
@@ -17,7 +22,7 @@ export class CreditStore {
     this.clickedCredit = credit;
   });
 
-  public addAccount = action((credit: ICredit): void => {
+  public addCredit = action((credit: ICredit): void => {
     if (this.creditList) {
       this.creditList.push(credit);
     } else {
