@@ -1,8 +1,9 @@
 import { TabsProps } from "antd";
 import {
   AccountItemsListStyled,
-  SegmentContentWrapper,
+  CreditItemsListStyled,
 } from "./PersonPage.styles";
+import { BlockWrapper } from "@shared/ui";
 
 export const TEXTS = {
   title: " аккаунта ",
@@ -13,14 +14,18 @@ export const segments: TabsProps["items"] = [
     label: "Счета",
     key: "1",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <AccountItemsListStyled />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
   },
   {
     label: "Кредиты",
     key: "2",
-    children: <SegmentContentWrapper>`dd`</SegmentContentWrapper>,
+    children: (
+      <BlockWrapper>
+        <CreditItemsListStyled />
+      </BlockWrapper>
+    ),
   },
 ];

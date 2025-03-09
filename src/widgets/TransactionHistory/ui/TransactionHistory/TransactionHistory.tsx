@@ -36,11 +36,12 @@ export const TransactionHistory: FC<{ className?: string }> = observer(
 
     return (
       <div className={className}>
-        {clickedAccount?.transactions?.map((item, index) => (
+        {transactionHistory?.map((item, index) => (
           <div key={index}>
             <TransactionHistoryElement {...item} />
-            {clickedAccount?.transactions &&
-              index < clickedAccount?.transactions.length - 1 && <Divider />}
+            {transactionHistory && index < transactionHistory.length - 1 && (
+              <Divider />
+            )}
           </div>
         ))}
       </div>

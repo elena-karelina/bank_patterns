@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PageLayout } from "@shared/ui";
+import { BlockWrapper, PageLayout } from "@shared/ui";
 import Title from "antd/es/typography/Title";
 import { TransactionHistoryStyled } from "./AccountDetailsPage.styles";
 import { useStores } from "@shared/contexts/stores";
@@ -16,7 +16,9 @@ export const AccountDetailsPage: FC = () => {
     >
       <Title level={4}>Баланс: {clickedAccount?.balance}</Title>
       <Title level={4}>История операций</Title>
-      <TransactionHistoryStyled />
+      <BlockWrapper>
+        <TransactionHistoryStyled />
+      </BlockWrapper>
     </PageLayout>
   );
 };

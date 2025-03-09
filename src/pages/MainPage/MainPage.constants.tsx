@@ -1,11 +1,11 @@
-import { SegmentContentWrapper } from "./MainPage.styles";
-import { CreateEmployee } from "@widgets/CreateEmployee";
+import { CreateEmployee } from "@features/CreateEmployee";
 import { CreateUser } from "@widgets/CreateUser/ui";
-import { CreateCreditRate } from "@widgets/CreateCreditRate/ui/CreateCreditRate";
+import { CreateCreditRate } from "@features/CreateCreditRate";
 import { CreditRateList } from "@widgets/CreditRateList";
 import { ISegment } from "./MainPage.interfaces";
-import { EmployeeItemsList } from "@widgets/EmployeeItemsList/EmployeeItemsList";
+import { EmployeeItemsList } from "@widgets/EmployeeItemsList";
 import { UserItemsList } from "@widgets/UserItemsList";
+import { BlockWrapper } from "@shared/ui";
 
 export const segments: ISegment[] = [
   {
@@ -13,9 +13,9 @@ export const segments: ISegment[] = [
     title: "Сотрудники",
     key: "1",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <EmployeeItemsList />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
     button: <CreateEmployee />,
   },
@@ -24,9 +24,9 @@ export const segments: ISegment[] = [
     title: "Пользователи",
     key: "2",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <UserItemsList />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
     button: <CreateUser />,
   },
@@ -35,9 +35,9 @@ export const segments: ISegment[] = [
     title: "Тарифы кредитов",
     key: "3",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <CreditRateList />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
     button: <CreateCreditRate />,
   },

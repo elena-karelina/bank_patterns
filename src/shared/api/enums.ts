@@ -8,4 +8,6 @@ export enum EQueryKeys {
   BanUser = "ban-user",
   AccountList = "account-list",
   TransactionHistory = "transaction-history",
+  CreditList = "credit-list",
+  CreditDetails = "credit-details",
 }

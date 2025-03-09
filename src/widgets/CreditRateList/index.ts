@@ -1,1 +1,1 @@
-export { CreditRateList } from "./CreditRateList";
+export { CreditRateList } from "./ui";

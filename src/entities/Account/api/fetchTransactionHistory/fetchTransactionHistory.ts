@@ -1,12 +1,12 @@
-import { ITransaction } from "@shared/types";
+import { ITransaction } from "@entities/Transaction/models";
 import { ITransactionHistory } from "./fetchTransactionHistory.interfaces";
 
 export const fetchTransactionHistory = async (
   id: string
 ): Promise<ITransaction[]> => {
-  const url = `http://51.250.46.120:5001/core/transaction/history?Accounts=${id}`;
-  const token = localStorage.getItem("userToken");
-  console.log("userToken", token);
+  const url = `http://51.250.46.120:5001/core/support/transactions/${id}`;
+  const token = localStorage.getItem("token");
+  console.log("token", token);
 
   const response = await fetch(url, {
     method: "GET",

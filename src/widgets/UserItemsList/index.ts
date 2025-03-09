@@ -1,1 +1,1 @@
-export { UserItemsList } from "./UserItemsList";
+export { UserItemsList } from "./ui";

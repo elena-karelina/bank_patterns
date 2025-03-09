@@ -1,4 +1,7 @@
-export interface ICredit {
+import { ITransaction } from "@entities/Transaction/models";
+import { IPayment } from "@entities/Transaction/models";
+
+export interface ICreditRate {
   id: string;
   name: string;
   yearlyRate: number;
@@ -6,4 +9,28 @@ export interface ICredit {
 export interface ICreateCredit {
   name: string;
   yearlyRate: number;
+}
+
+export interface ICredit {
+  id: string;
+  amount: number;
+  rate: number;
+  deadlineTime: string;
+  status: string;
+  transactions?: ITransaction[];
+}
+export interface ICreditFull {
+  id: string;
+  userId: string;
+  rate: ICreditRate;
+  status: string;
+  givenMoney: number;
+  createTime: string;
+  deadlineTime: string;
+  termDays: number;
+  dailyPayment: number;
+  totalMoneyToPay: number;
+  moneyLeftToPay: number;
+  transactions: ITransaction[];
+  payments: IPayment[];
 }

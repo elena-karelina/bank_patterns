@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AccountItemsList } from "@widgets/AccountItemsList/ui";
 import { Tabs } from "antd";
+import { CreditItemsList } from "@widgets/CreditItemsList/ui";
 
 export const AccountItemsListStyled = styled(AccountItemsList)`
   width: 100%;
@@ -18,6 +19,6 @@ export const TabsStyled = styled(Tabs)`
   width: calc(100% + 137px);
 `;
 
-export const SegmentContentWrapper = styled.div`
-  min-height: 300px;
+export const CreditItemsListStyled = styled(CreditItemsList)`
+  width: 100%;
 `;

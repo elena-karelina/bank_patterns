@@ -1,5 +1,5 @@
-import { ICredit } from "@entities/Credit/model";
+import { ICreditRate } from "@entities/Credit/model";
 
 export interface ICreditRateDataResponse {
-  data: ICredit[];
+  data: ICreditRate[];
 }

@@ -8,11 +8,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { AccountDetailsPage } from "@pages/AccountDetailsPage";
 import { LoginPage } from "@pages/LoginPage";
 import { PersonPage } from "@pages/PersonPage";
+import { CreditDetailsPage } from "@pages/CreditDetailsPage";
 
 export const Page: FC = observer(() => {
-  // const {
-  //   routingStore: { appStage },
-  // } = useStores();
   return (
     <Wrapper>
       <Routes>
@@ -20,6 +18,7 @@ export const Page: FC = observer(() => {
         <Route path="/main" element={<MainPage />} />
         <Route path="/person/:id" element={<PersonPage />} />
         <Route path="/details/:id" element={<AccountDetailsPage />} />
+        <Route path="/credit/:id" element={<CreditDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
       <Image src={meerkat} />

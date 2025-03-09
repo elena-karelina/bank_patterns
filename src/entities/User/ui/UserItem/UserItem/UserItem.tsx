@@ -2,11 +2,11 @@ import { FC, useState } from "react";
 import { Icon, BlockWrapper, Wrapper } from "./UserItem.styles";
 import { TitleStyled } from "../../../../../shared/ui";
 import { BlockedTag } from "../BlockedTag";
-import { BanButton } from "@widgets/BanButton";
-import { useBanUser } from "@widgets/BanButton/hooks";
+import { BanButton } from "@features/BanButton";
+import { useBanUser } from "@features/BanButton/hooks";
 import { useStores } from "@shared/contexts/stores";
-import { UnbanButton } from "@widgets/UnbanButton";
-import { useUnbanUser } from "@widgets/UnbanButton/hooks";
+import { UnbanButton } from "@features/UnbanButton";
+import { useUnbanUser } from "@features/UnbanButton/hooks";
 import { useNavigate } from "react-router-dom";
 import { IUserItemProps } from "./UserItem.interfaces";
 

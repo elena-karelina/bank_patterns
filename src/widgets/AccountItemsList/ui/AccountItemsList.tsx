@@ -9,7 +9,7 @@ import { useStores } from "@shared/contexts/stores";
 export const AccountItemsList: FC<AccountItemsListProps> = ({ className }) => {
   const { id } = useParams();
   const {
-    accountStore: { setAccountList, accountList },
+    accountStore: { setAccountList },
   } = useStores();
   const { status, data: accountItems } = useAccountList(id as string);
 
@@ -26,15 +26,15 @@ export const AccountItemsList: FC<AccountItemsListProps> = ({ className }) => {
     return <ItemListShimmer />;
   }
 
-  if (!accountList || accountList.length === 0) {
+  if (!accountItems || accountItems.length === 0) {
     return <div className={className}>счетов нет</div>;
   }
   return (
     <div className={className}>
-      {accountList?.map((item, index) => (
+      {accountItems?.map((item, index) => (
         <div key={index}>
           <AccountItem data={item} />
-          {index < accountList.length - 1 && <Divider />}
+          {index < accountItems.length - 1 && <Divider />}
         </div>
       ))}
     </div>

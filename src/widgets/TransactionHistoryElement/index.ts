@@ -1,1 +1,1 @@
-export { TransactionHistoryElement } from "./TransactionHistoryElement";
+export { TransactionHistoryElement } from "./ui";
