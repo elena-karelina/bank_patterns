@@ -5,8 +5,8 @@ import { IAccountItemProps } from "./AccountItem.interfaces";
 import { useNavigate } from "react-router-dom";
 import { useStores } from "@shared/contexts/stores";
 import { ClosedTag } from "../ClosedTag";
-import { CloseAccountButton } from "@widgets/CloseAccountButton";
 import { observer } from "mobx-react-lite";
+import { CloseAccountButton } from "@features/CloseAccountButton";
 
 export const AccountItem: FC<IAccountItemProps> = observer(({ data }) => {
   const navigate = useNavigate();

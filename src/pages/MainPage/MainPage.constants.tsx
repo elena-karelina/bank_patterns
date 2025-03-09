@@ -1,12 +1,12 @@
-import { CreateAccount } from "@widgets/CreateAccount/ui";
+import { CreateAccount } from "@features/CreateAccount/ui";
 import { ISegment } from "./MainPage.interfaces";
 import {
   AccountItemsListStyled,
   CreditItemsListStyled,
-  SegmentContentWrapper,
 } from "./MainPage.styles";
-import { CreateCredit } from "@widgets/CreateCredit/ui";
+import { CreateCredit } from "@features/CreateCredit/ui";
 import { CreditCalculation } from "@features/CreditCalculation";
+import { BlockWrapper } from "@shared/ui";
 
 export const segments: ISegment[] = [
   {
@@ -14,9 +14,9 @@ export const segments: ISegment[] = [
     title: "Мои счета",
     key: "1",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <AccountItemsListStyled />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
     button: <CreateAccount />,
   },
@@ -25,9 +25,9 @@ export const segments: ISegment[] = [
     title: "Мои кредиты",
     key: "2",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <CreditItemsListStyled />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
     button: <CreateCredit />,
   },
@@ -36,9 +36,9 @@ export const segments: ISegment[] = [
     title: "Тарифы кредитов",
     key: "3",
     children: (
-      <SegmentContentWrapper>
+      <BlockWrapper>
         <CreditCalculation />
-      </SegmentContentWrapper>
+      </BlockWrapper>
     ),
   },
 ];

@@ -5,8 +5,10 @@ import { TransactionHistoryElement } from "@widgets/TransactionHistoryElement";
 import { observer } from "mobx-react-lite";
 import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { TransactionHistoryProps } from "./TransactionHistory.interfaces";
+import { TEXTS } from "./TransactionHistory.constants";
 
-export const TransactionHistory: FC<{ className?: string }> = observer(
+export const TransactionHistory: FC<TransactionHistoryProps> = observer(
   ({ className }) => {
     const {
       accountStore: { clickedAccount, setTransactions },
@@ -20,18 +22,18 @@ export const TransactionHistory: FC<{ className?: string }> = observer(
     useEffect(() => {
       if (transactionHistory) {
         setTransactions({
-          id: clickedAccount?.id as string,
+          id: id as string,
           transactions: transactionHistory,
         });
       }
-    }, [transactionHistory, setTransactions, clickedAccount?.id]);
+    }, [transactionHistory, setTransactions, id]);
 
     if (status === "pending") {
       return <ItemListShimmer />;
     }
 
     if (transactionHistory?.length === 0) {
-      return <div className={className}>транзакций нет</div>;
+      return <div className={className}>{TEXTS.noTransactions}</div>;
     }
 
     return (

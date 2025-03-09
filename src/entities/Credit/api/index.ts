@@ -5,3 +5,4 @@ export {
   fetchCreateCredit,
   type ICreateCreditRequest,
 } from "./fetchCreateCredit";
+export { fetchMakePayment } from "./fetchMakePayment";

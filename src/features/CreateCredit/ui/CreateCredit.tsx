@@ -55,6 +55,7 @@ export const CreateCredit: FC = () => {
             transactions: [],
           };
           addCredit(credit);
+          setIsModalOpen(false);
         },
         onError: (error) => {
           console.error("Ошибка:", error);

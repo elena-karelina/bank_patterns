@@ -11,7 +11,7 @@ export const Depositing: FC = () => {
   const { id } = useParams();
   const { mutate } = useDepositing();
   const {
-    accountStore: { clickedAccount, addTransaction },
+    accountStore: { addTransaction },
   } = useStores();
 
   type FieldType = {
@@ -35,7 +35,7 @@ export const Depositing: FC = () => {
       { amount: values.amount, id },
       {
         onSuccess: (transaction: ITransaction) => {
-          addTransaction({ id: clickedAccount?.id as string, transaction });
+          addTransaction({ id: id as string, transaction });
           console.log("транзакция прошла");
         },
         onError: (error) => {

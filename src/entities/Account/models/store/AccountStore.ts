@@ -72,9 +72,10 @@ export class AccountStore {
         }
         account.balance = Number(account.balance);
         transaction.amount = Number(transaction.amount);
+
         if (
           transaction.type === ETransactionType.Deposit ||
-          ETransactionType.LoanAccrual
+          transaction.type === ETransactionType.LoanAccrual
         ) {
           account.balance += transaction.amount;
         } else {

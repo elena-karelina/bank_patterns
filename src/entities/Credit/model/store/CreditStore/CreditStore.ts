@@ -3,6 +3,7 @@ import { ICredit, ICreditRate } from "../../types";
 
 export class CreditStore {
   public creditList: ICredit[] | undefined;
+  // public creditListFull: ICreditFull[] | undefined;
   public rateList: ICreditRate[] | undefined;
   public clickedCredit: ICredit | undefined;
 
@@ -13,6 +14,10 @@ export class CreditStore {
   public setCreditRateList = action((rateList: ICreditRate[]): void => {
     this.rateList = rateList;
   });
+
+  // public addCreditFull = action((creditFull: ICreditFull[]): void => {
+  //   this.rateList = rateList;
+  // });
 
   public setCreditList = action((creditList: ICredit[]): void => {
     this.creditList = creditList;

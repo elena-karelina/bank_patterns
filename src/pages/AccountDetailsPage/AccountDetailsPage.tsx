@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { PageLayout } from "@shared/ui";
+import { BlockWrapper, PageLayout } from "@shared/ui";
 import Title from "antd/es/typography/Title";
 import { Row, TransactionHistoryStyled } from "./AccountDetailsPage.styles";
 import { useStores } from "@shared/contexts/stores";
-import { Depositing } from "@widgets/Depositing";
+import { Depositing } from "@features/Depositing";
 import { observer } from "mobx-react-lite";
-import { Withdrawal } from "@widgets/Withdrawal";
+import { Withdrawal } from "@features/Withdrawal";
 
 export const AccountDetailsPage: FC = observer(() => {
   const {
@@ -28,7 +28,9 @@ export const AccountDetailsPage: FC = observer(() => {
       )}
 
       <Title level={4}>История операций</Title>
-      <TransactionHistoryStyled />
+      <BlockWrapper>
+        <TransactionHistoryStyled />
+      </BlockWrapper>
     </PageLayout>
   );
 });

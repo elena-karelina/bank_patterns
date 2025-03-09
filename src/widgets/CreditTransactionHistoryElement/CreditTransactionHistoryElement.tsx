@@ -5,15 +5,19 @@ import {
   Data,
   Deposit,
   WithdrawalAmount,
-} from "./TransactionHistoryElement.styles";
-import { ITransaction, transactionText } from "@entities/Transaction/models";
-import { plusTransaction } from "./TransactionHistoryElement.constants";
+  NotYet,
+} from "./CreditTransactionHistoryElement.styles";
+import { transactionText } from "@entities/Transaction/models";
+import {
+  ETransactionType,
+  IPayment,
+} from "@entities/Transaction/models/types/transaction";
 
-export const TransactionHistoryElement: FC<ITransaction> = (data) => {
-  const { amount, type, performedAt } = data;
-  console.log(amount, type, performedAt);
-  console.log(transactionText[type]);
-  const date = new Date(performedAt);
+export const CreditTransactionHistoryElement: FC<IPayment> = (data) => {
+  const { amount, status, paymentTime } = data;
+  console.log(amount, status, paymentTime);
+  console.log(transactionText[status]);
+  const date = new Date(paymentTime);
 
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -30,14 +34,14 @@ export const TransactionHistoryElement: FC<ITransaction> = (data) => {
     .toString()
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-  const plus = plusTransaction.has(type);
-
   return (
     <Wrapper>
       <Row>
-        <div>{transactionText[type]}</div>
-        {plus ? (
-          <Deposit>+ {amount} P</Deposit>
+        <div>{transactionText[status]}</div>
+        {status === ETransactionType.Payed ? (
+          <Deposit>- {amount} P</Deposit>
+        ) : status === ETransactionType.NotYet ? (
+          <NotYet>- {amount} P</NotYet>
         ) : (
           <WithdrawalAmount>- {amount} P</WithdrawalAmount>
         )}

@@ -21,9 +21,3 @@ export const TabsStyled = styled(Tabs)`
   margin-left: -157px;
   width: calc(100% + 157px);
 `;
-
-export const SegmentContentWrapper = styled.div`
-  min-height: 300px;
-  max-height: 450px;
-  overflow-y: scroll;
-`;

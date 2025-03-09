@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { ReactElement } from "react";
-import { useCloseAccount } from "@widgets/CloseAccountButton/hooks";
+import { useCloseAccount } from "../../hooks";
 import { useStores } from "@shared/contexts/stores";
 import { ICloseAccountButtonProps } from "./CloseAccountButton.interfaces";
 

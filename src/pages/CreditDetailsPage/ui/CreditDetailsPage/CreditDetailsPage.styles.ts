@@ -1,8 +1,12 @@
-import { TransactionHistory } from "@widgets/TransactionHistory";
+import { MakePayment } from "@features/MakePayment";
+import { CreditTransactionHistory } from "@widgets/CreditTransactionHistory";
 import styled from "styled-components";
 
-export const TransactionHistoryStyled = styled(TransactionHistory)`
+export const CreditTransactionHistoryStyled = styled(CreditTransactionHistory)`
   margin-top: 30px;
+`;
+export const MakePaymentStyled = styled(MakePayment)`
+  margin-block: 15px 10px;
 `;
 export const Row = styled.div`
   display: flex;

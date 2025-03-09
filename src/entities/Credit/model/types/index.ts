@@ -1,1 +1,6 @@
-export type { ICreditRate, ICalculateCreditResult, ICredit } from "./credit";
+export type {
+  ICreditRate,
+  ICalculateCreditResult,
+  ICredit,
+  ICreditFull,
+} from "./credit";

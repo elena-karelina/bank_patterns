@@ -11,7 +11,7 @@ export const Withdrawal: FC = () => {
   const { id } = useParams();
   const { mutate } = useWithdrawal();
   const {
-    accountStore: { clickedAccount, addTransaction },
+    accountStore: { addTransaction },
   } = useStores();
 
   type FieldType = {
@@ -36,7 +36,7 @@ export const Withdrawal: FC = () => {
       {
         onSuccess: (transaction: ITransaction) => {
           console.log(transaction);
-          addTransaction({ id: clickedAccount?.id as string, transaction });
+          addTransaction({ id: id as string, transaction });
           console.log("транзакция прошла");
         },
         onError: (error) => {
