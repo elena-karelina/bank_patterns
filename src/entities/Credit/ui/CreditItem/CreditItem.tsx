@@ -14,7 +14,7 @@ export const CreditItem: FC<ICreditItemProps> = observer(({ data }) => {
 
   const handleClick = (): void => {
     setClickedCredit(data);
-    navigate(`/details/${data.id}`);
+    navigate(`/credit/${data.id}`);
   };
 
   return (

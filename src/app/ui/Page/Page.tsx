@@ -7,6 +7,7 @@ import { Image, Wrapper } from "./Page.styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AccountDetailsPage } from "@pages/AccountDetailsPage";
 import { LoginPage } from "@pages/LoginPage";
+import { CreditDetailsPage } from "@pages/CreditDetailsPage/ui";
 
 export const Page: FC = observer(() => {
   return (
@@ -15,6 +16,7 @@ export const Page: FC = observer(() => {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/details/:id" element={<AccountDetailsPage />} />
+        <Route path="/credit/:id" element={<CreditDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
       <Image src={meerkat} />

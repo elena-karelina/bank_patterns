@@ -4,4 +4,5 @@ export enum EQueryKeys {
   AccontList = "account-list",
   CreditList = "credit-list",
   TransactionHistory = "transaction-history",
+  CreditDetails = "credit-details",
 }

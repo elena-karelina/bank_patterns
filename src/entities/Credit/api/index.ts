@@ -1,5 +1,6 @@
 export { fetchCreditRateData } from "./fetchCreditRateData";
 export { fetchCreditList } from "./fetchCreditList";
+export { fetchCreditDetails } from "./fetchCreditDetails";
 export {
   fetchCreateCredit,
   type ICreateCreditRequest,
