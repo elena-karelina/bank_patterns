@@ -1,1 +1,1 @@
-export { CreateCredit } from "./CreateCredit";
+export { CreateCredit } from "./ui";

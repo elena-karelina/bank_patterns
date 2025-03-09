@@ -1,0 +1,1 @@
+export { fetchCreditRateData } from "./fetchCreditRateData";

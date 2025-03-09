@@ -1,22 +1,23 @@
 import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
 import { PageLayout } from "@shared/ui";
-import { segments, TEXTS } from "./MainPage.constants";
+import { segments } from "./MainPage.constants";
 import { Content, TabsStyled } from "./MainPage.styles";
-import { CreateAccount } from "@widgets/CreateAccount";
-import { CreateCredit } from "@widgets/CreateCredit";
+import { ISegment } from "./MainPage.interfaces";
 
 export const MainPage: FC = observer(() => {
-  const [segmentName, setSegmentName] = useState<string>(
-    segments && segments[0].label
-  );
+  const [segment, setSegment] = useState<ISegment>(segments[0]);
+
   const onChange = (tabKey: string) => {
     const currentSegment = segments?.find(({ key }) => key === tabKey);
-    setSegmentName(currentSegment?.label);
+
+    if (currentSegment) {
+      setSegment(currentSegment);
+    }
   };
 
   return (
-    <PageLayout title={`${TEXTS.title + segmentName.toLowerCase()}`}>
+    <PageLayout title={segment.title}>
       <Content>
         <TabsStyled
           defaultActiveKey="1"
@@ -24,11 +25,7 @@ export const MainPage: FC = observer(() => {
           items={segments}
           onChange={onChange}
         />
-        {segmentName.toLowerCase() === "счета" ? (
-          <CreateAccount />
-        ) : (
-          <CreateCredit />
-        )}
+        {segment.button}
       </Content>
     </PageLayout>
   );

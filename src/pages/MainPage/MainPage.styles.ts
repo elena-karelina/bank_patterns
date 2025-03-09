@@ -14,8 +14,8 @@ export const Content = styled.div`
 `;
 
 export const TabsStyled = styled(Tabs)`
-  margin-left: -137px;
-  width: calc(100% + 137px);
+  margin-left: -157px;
+  width: calc(100% + 157px);
 `;
 
 export const SegmentContentWrapper = styled.div`

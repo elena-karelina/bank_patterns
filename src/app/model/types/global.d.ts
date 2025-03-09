@@ -1,5 +1,7 @@
+import { AccountStore } from "@entities/Account/models";
+
 declare global {
   interface IStores {
-    routingStore: RoutingStore;
+    accountStore: AccountStore;
   }
 }
