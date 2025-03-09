@@ -1,18 +1,16 @@
-import {
-  ICalculateCreditRequest,
-  ICalculateCreditResponse,
-} from "./fetchCalculateCredit.interfaces";
+import { ICalculateCreditResult } from "@entities/Credit/model";
+import { ICalculateCreditRequest } from "./fetchCalculateCredit.interfaces";
 
 export const fetchCalculateCredit = async (
   data: ICalculateCreditRequest
-): Promise<ICalculateCreditResponse> => {
-  const { amount, termMonths, rateId } = data;
+): Promise<ICalculateCreditResult> => {
+  const { givenMoney, termDays, rateId } = data;
 
-  const url = `http://51.250.46.120:5002/terms?amount=${amount}&termMonths=${termMonths}&rateId=${rateId}`;
+  const url = `http://51.250.46.120:5002/api/loan/terms?givenMoney=${givenMoney}&termDays=${termDays}&rateId=${rateId}`;
   const token = localStorage.getItem("userToken");
 
   const response = await fetch(url, {
-    method: "Post",
+    method: "Get",
     headers: {
       Accept: "text/plain",
       Authorization: `Bearer ${token}`,
@@ -23,6 +21,7 @@ export const fetchCalculateCredit = async (
     throw new Error("error");
   }
 
-  const result: ICalculateCreditResponse = await response.json();
+  const result: ICalculateCreditResult = await response.json();
+  console.log(result);
   return result;
 };

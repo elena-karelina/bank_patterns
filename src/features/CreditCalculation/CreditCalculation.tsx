@@ -22,14 +22,14 @@ export const CreditCalculation: FC = () => {
       <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
         <Form.Item<FieldType>
           label="Сумма"
-          name="amount"
+          name="givenMoney"
           rules={[{ required: true, message: "Введите сумму" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item<FieldType>
-          label="Количество месяцев"
-          name="termMonths"
+          label="Количество дней"
+          name="termDays"
           rules={[{ required: true, message: "Введите количество месяцев" }]}
         >
           <Input />

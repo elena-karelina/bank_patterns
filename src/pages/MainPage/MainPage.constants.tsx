@@ -2,6 +2,7 @@ import { CreateAccount } from "@widgets/CreateAccount/ui";
 import { ISegment } from "./MainPage.interfaces";
 import {
   AccountItemsListStyled,
+  CreditItemsListStyled,
   SegmentContentWrapper,
 } from "./MainPage.styles";
 import { CreateCredit } from "@widgets/CreateCredit/ui";
@@ -23,7 +24,11 @@ export const segments: ISegment[] = [
     label: "Кредиты",
     title: "Мои кредиты",
     key: "2",
-    children: <SegmentContentWrapper>`dd`</SegmentContentWrapper>,
+    children: (
+      <SegmentContentWrapper>
+        <CreditItemsListStyled />
+      </SegmentContentWrapper>
+    ),
     button: <CreateCredit />,
   },
   {

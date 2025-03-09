@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { AccountItemsList } from "@widgets/AccountItemsList";
 import { Tabs } from "antd";
+import { CreditItemsList } from "@widgets/CreditItemsList";
 
 export const AccountItemsListStyled = styled(AccountItemsList)`
+  width: 100%;
+`;
+export const CreditItemsListStyled = styled(CreditItemsList)`
   width: 100%;
 `;
 
@@ -20,4 +24,6 @@ export const TabsStyled = styled(Tabs)`
 
 export const SegmentContentWrapper = styled.div`
   min-height: 300px;
+  max-height: 450px;
+  overflow-y: scroll;
 `;

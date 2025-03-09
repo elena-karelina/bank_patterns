@@ -1,0 +1,1 @@
+export { fetchCloseAccount } from "./fetchCloseAccount";

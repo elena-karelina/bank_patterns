@@ -31,6 +31,7 @@ export const CreateAccount: FC = () => {
           id: "id",
           status: "status",
           balance: 0,
+          transactions: [],
         };
         addAccount(account);
       },

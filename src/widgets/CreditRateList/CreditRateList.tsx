@@ -21,7 +21,7 @@ export const CreditRateList: FC<CreditRateListProps> = ({
         <div key={index}>
           <CreditRateItem
             name={item.name}
-            rate={item.rate}
+            rate={item.yearlyRate}
             id={item.id}
             formData={formData}
           />

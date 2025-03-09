@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const Calculations = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: left;
 `;
 export const Row = styled.div`
   display: flex;

@@ -12,8 +12,15 @@ export const Data = styled.div`
   font-size: 13px;
 `;
 
-export const Amount = styled.div`
+export const Deposit = styled.div`
   background: green;
+  border-radius: 15px;
+  padding: 1px 5px;
+  color: white;
+`;
+
+export const WithdrawalAmount = styled.div`
+  background: red;
   border-radius: 15px;
   padding: 1px 5px;
   color: white;

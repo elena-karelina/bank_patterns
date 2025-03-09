@@ -1,10 +1,5 @@
-import { ICalculateCreditResult } from "@entities/Credit/model";
-
-export interface ICalculateCreditResponse {
-  data: ICalculateCreditResult;
-}
 export interface ICalculateCreditRequest {
-  amount: number;
-  termMonths: number;
+  givenMoney: number;
+  termDays: number;
   rateId: string;
 }

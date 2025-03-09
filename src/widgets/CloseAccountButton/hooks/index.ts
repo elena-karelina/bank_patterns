@@ -1,0 +1,1 @@
+export { useCloseAccount } from "./useCloseAccount";

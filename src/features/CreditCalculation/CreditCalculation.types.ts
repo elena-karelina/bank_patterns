@@ -1,4 +1,4 @@
 export type FieldType = {
-  amount: string;
-  termMonths: string;
+  givenMoney: number;
+  termDays: number;
 };
