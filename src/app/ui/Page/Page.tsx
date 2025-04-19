@@ -6,12 +6,12 @@ import { MainPage } from "@pages/MainPage";
 import { Image, ThemeImage, Wrapper } from "./Page.styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AccountDetailsPage } from "@pages/AccountDetailsPage";
-import { LoginPage } from "@pages/LoginPage";
 import { CreditDetailsPage } from "@pages/CreditDetailsPage/ui";
 import { useStores } from "@shared/contexts/stores";
 import { ConfigProvider } from "antd";
 import { EThemeAlgorithm, TTheme } from "@entities/Theme/models";
 import { useChangeTheme } from "@entities/Theme/hooks";
+import { CallbackPage } from "@pages/CallbackPage";
 
 export const Page: FC = observer(() => {
   const {
@@ -43,11 +43,11 @@ export const Page: FC = observer(() => {
     >
       <Wrapper>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/main" replace />} />
+          <Route path="/signin-callback" element={<CallbackPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/details/:id" element={<AccountDetailsPage />} />
           <Route path="/credit/:id" element={<CreditDetailsPage />} />
-          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Image src={meerkat} />
         <ThemeImage onClick={handleThemeClick} />

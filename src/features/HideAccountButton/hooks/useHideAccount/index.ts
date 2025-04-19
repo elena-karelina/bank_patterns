@@ -1,0 +1,1 @@
+export { useHideAccount } from "./useHideAccount";

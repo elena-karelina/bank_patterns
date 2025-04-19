@@ -1,38 +1,24 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { AccountItem } from "@entities/Account/ui";
-import { Divider, ItemListShimmer } from "@shared/ui";
-import { useAccountList } from "@entities/Account/hooks";
+import { Divider } from "@shared/ui";
 import { useStores } from "@shared/contexts/stores";
 import { observer } from "mobx-react-lite";
 
 export const AccountItemsList: FC<{ className?: string }> = observer(
   ({ className }) => {
     const {
-      accountStore: { accountList, setAccountList },
+      accountStore: { visibleAccountList },
     } = useStores();
-    const { status, data: accountItems } = useAccountList();
-    console.log(accountItems);
-
-    useEffect(() => {
-      if (accountItems) {
-        setAccountList(accountItems);
-      }
-    }, [accountItems, setAccountList]);
-
-    if (status === "pending") {
-      return <ItemListShimmer />;
-    }
-
-    if (!accountList || accountList.length === 0) {
-      return <div className={className}>счетов нет</div>;
-    }
+    visibleAccountList?.map((item) => {
+      console.log(item.name, item.status);
+    });
 
     return (
       <div className={className}>
-        {accountList?.map((item, index) => (
+        {visibleAccountList?.map((item, index) => (
           <div key={index}>
-            <AccountItem data={item} />
-            {index < accountList.length - 1 && <Divider />}
+            <AccountItem data={item} isHidden={false} />
+            {index < visibleAccountList.length - 1 && <Divider />}
           </div>
         ))}
       </div>

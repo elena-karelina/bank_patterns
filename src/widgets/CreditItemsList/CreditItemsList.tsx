@@ -11,6 +11,7 @@ export const CreditItemsList: FC<{ className?: string }> = observer(
       creditStore: { creditList, setCreditList },
     } = useStores();
     const { status, data: creditItems } = useCreditList();
+
     console.log(creditItems);
 
     useEffect(() => {

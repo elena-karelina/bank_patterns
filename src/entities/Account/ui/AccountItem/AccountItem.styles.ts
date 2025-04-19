@@ -19,6 +19,6 @@ export const Icon = styled(RightOutlined)`
 `;
 export const Block = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 8px;
   align-items: center;
 `;

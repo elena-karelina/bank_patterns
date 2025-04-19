@@ -1,4 +1,5 @@
 import { TTheme } from "@entities/Theme/models";
+import { HttpError } from "@shared/api";
 
 export const fetchGetTheme = async (): Promise<TTheme> => {
   const url = `http://51.250.46.120:5004/api/theme`;
@@ -13,7 +14,7 @@ export const fetchGetTheme = async (): Promise<TTheme> => {
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const result: TTheme = await response.json();

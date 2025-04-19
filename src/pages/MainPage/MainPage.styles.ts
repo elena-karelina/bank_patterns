@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { AccountItemsList } from "@widgets/AccountItemsList";
 import { Tabs } from "antd";
-import { CreditItemsList } from "@widgets/CreditItemsList";
+import { AccountListPage } from "@pages/AccountListPage";
+import { CreditPage } from "@pages/CreditPage/CreditPage";
 
-export const AccountItemsListStyled = styled(AccountItemsList)`
+export const AccountListPageStyled = styled(AccountListPage)`
   width: 100%;
 `;
-export const CreditItemsListStyled = styled(CreditItemsList)`
+
+export const CreditPageStyled = styled(CreditPage)`
   width: 100%;
 `;
 

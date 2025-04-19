@@ -1,5 +1,6 @@
 import { ICalculateCreditResult } from "@entities/Credit/model";
 import { ICalculateCreditRequest } from "./fetchCalculateCredit.interfaces";
+import { HttpError } from "@shared/api";
 
 export const fetchCalculateCredit = async (
   data: ICalculateCreditRequest
@@ -18,7 +19,7 @@ export const fetchCalculateCredit = async (
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const result: ICalculateCreditResult = await response.json();

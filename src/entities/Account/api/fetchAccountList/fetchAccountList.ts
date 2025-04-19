@@ -1,5 +1,6 @@
 import { IAccount } from "@entities/Account/models";
 import { IAccountListresult } from "./fetchAccountList.interfaces";
+import { HttpError } from "@shared/api";
 
 export const fetchAccountList = async (): Promise<IAccount[]> => {
   const url = `http://51.250.46.120:5001/core/account`;
@@ -15,7 +16,7 @@ export const fetchAccountList = async (): Promise<IAccount[]> => {
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: IAccountListresult = await response.json();

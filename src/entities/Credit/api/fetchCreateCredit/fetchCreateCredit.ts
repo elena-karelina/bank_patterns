@@ -1,3 +1,4 @@
+import { HttpError } from "@shared/api";
 import {
   ICreateCreditRequest,
   ICreateCreditResult,
@@ -22,7 +23,7 @@ export const fetchCreateCredit = async (
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const result: ICreateCreditResult = await response.json();

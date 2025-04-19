@@ -1,5 +1,6 @@
 import { ILoginData } from "@entities/User/models/types/index";
 import { ILoginResult } from "./fetchLogin.interfaces";
+import { HttpError } from "@shared/api";
 
 export const fetchLogin = async ({
   phone,
@@ -20,7 +21,7 @@ export const fetchLogin = async ({
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: ILoginResult = await response.json();

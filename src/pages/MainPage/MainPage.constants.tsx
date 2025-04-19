@@ -1,9 +1,6 @@
 import { CreateAccount } from "@features/CreateAccount/ui";
 import { ISegment } from "./MainPage.interfaces";
-import {
-  AccountItemsListStyled,
-  CreditItemsListStyled,
-} from "./MainPage.styles";
+import { AccountListPageStyled, CreditPageStyled } from "./MainPage.styles";
 import { CreateCredit } from "@features/CreateCredit/ui";
 import { CreditCalculation } from "@features/CreditCalculation";
 import { BlockWrapper } from "@shared/ui";
@@ -15,7 +12,7 @@ export const segments: ISegment[] = [
     key: "1",
     children: (
       <BlockWrapper>
-        <AccountItemsListStyled />
+        <AccountListPageStyled />
       </BlockWrapper>
     ),
     button: <CreateAccount />,
@@ -26,7 +23,7 @@ export const segments: ISegment[] = [
     key: "2",
     children: (
       <BlockWrapper>
-        <CreditItemsListStyled />
+        <CreditPageStyled />
       </BlockWrapper>
     ),
     button: <CreateCredit />,

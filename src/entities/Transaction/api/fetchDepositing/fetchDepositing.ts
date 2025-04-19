@@ -1,4 +1,5 @@
 import { ITransaction } from "@entities/Transaction/models";
+import { HttpError } from "@shared/api";
 
 export const fetchDepositing = async ({
   id,
@@ -24,7 +25,7 @@ export const fetchDepositing = async ({
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: { newDepositTransaction: ITransaction } = await response.json();

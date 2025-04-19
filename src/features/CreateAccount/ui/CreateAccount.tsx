@@ -9,7 +9,7 @@ export const CreateAccount: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mutate } = useCreateAccount();
   const {
-    accountStore: { addAccount },
+    accountStore: { addVisibleAccount },
   } = useStores();
 
   type FieldType = {
@@ -26,15 +26,15 @@ export const CreateAccount: FC = () => {
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     mutate(values.name, {
-      onSuccess: () => {
+      onSuccess: (newAccount: IAccount) => {
         const account: IAccount = {
-          name: values.name,
-          id: "id",
-          status: "status",
-          balance: 0,
+          name: newAccount.name,
+          id: newAccount.id,
+          status: newAccount.status,
+          balance: newAccount.balance,
           transactions: [],
         };
-        addAccount(account);
+        addVisibleAccount(account);
       },
       onError: (error) => {
         console.error("Ошибка:", error);

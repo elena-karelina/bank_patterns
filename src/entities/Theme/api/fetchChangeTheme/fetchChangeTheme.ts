@@ -1,4 +1,5 @@
 import { TTheme } from "@entities/Theme/models";
+import { HttpError } from "@shared/api";
 
 export const fetchChangeTheme = async (theme: TTheme): Promise<null> => {
   const url = `http://51.250.46.120:5004/api/theme?theme=${theme}`;
@@ -13,7 +14,7 @@ export const fetchChangeTheme = async (theme: TTheme): Promise<null> => {
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   return null;

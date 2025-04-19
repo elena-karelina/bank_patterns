@@ -1,4 +1,8 @@
-export const fetchCreateAccount = async (name: string): Promise<null> => {
+import { IAccount } from "@entities/Account/models";
+import { IAccountListResult } from "./fetchCreateAccount.interfaces";
+import { HttpError } from "@shared/api";
+
+export const fetchCreateAccount = async (name: string): Promise<IAccount> => {
   const url = `http://51.250.46.120:5001/core/account`;
   const token = localStorage.getItem("userToken");
   console.log("userToken", token);
@@ -16,8 +20,10 @@ export const fetchCreateAccount = async (name: string): Promise<null> => {
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
-  return null;
+  const data: IAccountListResult = await response.json();
+
+  return data.newAccount;
 };

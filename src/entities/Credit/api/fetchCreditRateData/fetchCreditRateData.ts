@@ -1,3 +1,4 @@
+import { HttpError } from "@shared/api";
 import { ICreditRateDataResponse } from "./fetchCreditRateData.interfaces";
 
 export const fetchCreditRateData =
@@ -14,7 +15,7 @@ export const fetchCreditRateData =
     });
 
     if (!response.ok) {
-      throw new Error("error");
+      throw new HttpError(response.statusText, response.status);
     }
 
     const data: ICreditRateDataResponse = await response.json();

@@ -1,3 +1,4 @@
+import { HttpError } from "@shared/api";
 import { ICreditDetailsResult } from "./fetchCreditDetails.interfaces";
 
 export const fetchCreditDetails = async (
@@ -15,7 +16,7 @@ export const fetchCreditDetails = async (
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const result: ICreditDetailsResult = await response.json();
