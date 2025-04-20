@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Button, Form, FormProps, Input, Modal } from "antd";
+import { Button, Form, FormProps, Input, Modal, Select } from "antd";
 import { FC } from "react";
 import { useCreateAccount } from "../hooks";
 import { useStores } from "@shared/contexts/stores";
 import { IAccount } from "@entities/Account/models";
+import { ECurrencies } from "@shared/types";
 
 export const CreateAccount: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currency, setCurrency] = useState<ECurrencies>(ECurrencies.RUB);
+  const { Option } = Select;
   const { mutate } = useCreateAccount();
   const {
     accountStore: { addVisibleAccount },
@@ -14,6 +17,7 @@ export const CreateAccount: FC = () => {
 
   type FieldType = {
     name: string;
+    currency: ECurrencies;
   };
 
   const showModal = () => {
@@ -25,21 +29,26 @@ export const CreateAccount: FC = () => {
   };
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    mutate(values.name, {
-      onSuccess: (newAccount: IAccount) => {
-        const account: IAccount = {
-          name: newAccount.name,
-          id: newAccount.id,
-          status: newAccount.status,
-          balance: newAccount.balance,
-          transactions: [],
-        };
-        addVisibleAccount(account);
-      },
-      onError: (error) => {
-        console.error("Ошибка:", error);
-      },
-    });
+    console.log(values);
+    mutate(
+      { name: values.name, currency: values.currency },
+      {
+        onSuccess: (newAccount: IAccount) => {
+          const account: IAccount = {
+            name: newAccount.name,
+            id: newAccount.id,
+            status: newAccount.status,
+            balance: newAccount.balance,
+            currency: newAccount.currency,
+            transactions: [],
+          };
+          addVisibleAccount(account);
+        },
+        onError: (error) => {
+          console.error("Ошибка:", error);
+        },
+      }
+    );
     setIsModalOpen(false);
   };
 
@@ -68,7 +77,17 @@ export const CreateAccount: FC = () => {
           >
             <Input />
           </Form.Item>
-
+          <Form.Item<FieldType>
+            label="Валюта"
+            name="currency"
+            rules={[{ required: true, message: "Выберите валюту" }]}
+          >
+            <Select value={currency} onChange={(value) => setCurrency(value)}>
+              <Option value={ECurrencies.EUR}>евро</Option>
+              <Option value={ECurrencies.RUB}>рубль</Option>
+              <Option value={ECurrencies.USD}>доллар</Option>
+            </Select>
+          </Form.Item>
           <Form.Item label={null}>
             <Button type="primary" htmlType="submit">
               Создать

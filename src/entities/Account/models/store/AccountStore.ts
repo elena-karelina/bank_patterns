@@ -16,8 +16,10 @@ export class AccountStore {
     this.accountList = accountList;
   });
 
-  public setClickedAccount = action((account: IAccount): void => {
-    this.clickedAccount = account;
+  public setClickedAccount = action((id: string): void => {
+    this.clickedAccount = this.accountList?.find(
+      (account) => account.id === id
+    );
   });
 
   public addAccount = action((account: IAccount): void => {
@@ -122,6 +124,8 @@ export class AccountStore {
       if (account) {
         account.transactions = transactions;
       }
+
+      console.log(account?.transactions);
     }
   );
 

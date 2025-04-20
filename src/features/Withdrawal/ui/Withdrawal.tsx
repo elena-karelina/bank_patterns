@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { Button, Form, FormProps, Input, Modal } from "antd";
 import { FC } from "react";
-import { useStores } from "@shared/contexts/stores";
 import { useParams } from "react-router-dom";
-import { ITransaction } from "@entities/Transaction/models";
 import { useWithdrawal } from "../hooks";
 
 export const Withdrawal: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
   const { mutate } = useWithdrawal();
-  const {
-    accountStore: { addTransaction },
-  } = useStores();
+  // const {
+  //   accountStore: { addTransaction },
+  // } = useStores();
 
   type FieldType = {
     amount: number;
@@ -34,9 +32,9 @@ export const Withdrawal: FC = () => {
     mutate(
       { amount: values.amount, id },
       {
-        onSuccess: (transaction: ITransaction) => {
-          console.log(transaction);
-          addTransaction({ id: id as string, transaction });
+        onSuccess: () => {
+          // console.log(transaction);
+          // addTransaction({ id: id as string, transaction });
           console.log("транзакция прошла");
         },
         onError: (error) => {

@@ -3,34 +3,19 @@ import { FC } from "react";
 import meerkat from "../../../../public/logo.png";
 
 import { MainPage } from "@pages/MainPage";
-import { Image, ThemeImage, Wrapper } from "./Page.styles";
+import { Image, Wrapper } from "./Page.styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AccountDetailsPage } from "@pages/AccountDetailsPage";
 import { CreditDetailsPage } from "@pages/CreditDetailsPage/ui";
 import { useStores } from "@shared/contexts/stores";
 import { ConfigProvider } from "antd";
-import { EThemeAlgorithm, TTheme } from "@entities/Theme/models";
-import { useChangeTheme } from "@entities/Theme/hooks";
+import { EThemeAlgorithm } from "@entities/Theme/models";
 import { CallbackPage } from "@pages/CallbackPage";
 
 export const Page: FC = observer(() => {
   const {
-    themeStore: { theme, setTheme },
+    themeStore: { theme },
   } = useStores();
-
-  const { mutate } = useChangeTheme();
-
-  const handleThemeClick = () => {
-    const newTheme: TTheme = theme === "Light" ? "Dark" : "Light";
-    mutate(newTheme, {
-      onSuccess: () => {
-        setTheme(newTheme);
-      },
-      onError: (error) => {
-        console.error("Ошибка:", error);
-      },
-    });
-  };
 
   return (
     <ConfigProvider
@@ -50,7 +35,7 @@ export const Page: FC = observer(() => {
           <Route path="/credit/:id" element={<CreditDetailsPage />} />
         </Routes>
         <Image src={meerkat} />
-        <ThemeImage onClick={handleThemeClick} />
+        {/* <ThemeImage onClick={handleThemeClick} /> */}
       </Wrapper>
     </ConfigProvider>
   );

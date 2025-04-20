@@ -2,17 +2,15 @@ import { useState } from "react";
 import { Button, Form, FormProps, Input, Modal } from "antd";
 import { FC } from "react";
 import { useDepositing } from "../hooks";
-import { useStores } from "@shared/contexts/stores";
 import { useParams } from "react-router-dom";
-import { ITransaction } from "@entities/Transaction/models";
 
 export const Depositing: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
   const { mutate } = useDepositing();
-  const {
-    accountStore: { addTransaction },
-  } = useStores();
+  // const {
+  //   accountStore: { addTransaction },
+  // } = useStores();
 
   type FieldType = {
     amount: number;
@@ -34,8 +32,8 @@ export const Depositing: FC = () => {
     mutate(
       { amount: values.amount, id },
       {
-        onSuccess: (transaction: ITransaction) => {
-          addTransaction({ id: id as string, transaction });
+        onSuccess: () => {
+          // addTransaction({ id: id as string, transaction });
           console.log("транзакция прошла");
         },
         onError: (error) => {

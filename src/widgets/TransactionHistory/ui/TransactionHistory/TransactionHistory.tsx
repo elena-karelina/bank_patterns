@@ -21,10 +21,20 @@ export const TransactionHistory: FC<TransactionHistoryProps> = observer(
 
     useEffect(() => {
       if (transactionHistory) {
+        console.log("Transaction History:", transactionHistory);
+        console.log("Account ID:", id);
+        console.log("Clicked Account before update:", clickedAccount);
+
         setTransactions({
           id: id as string,
           transactions: transactionHistory,
         });
+
+        console.log("Clicked Account after update:", clickedAccount);
+        console.log(
+          "Clicked Account Transactions:",
+          clickedAccount?.transactions
+        );
       }
     }, [transactionHistory, setTransactions, id]);
 
@@ -42,7 +52,7 @@ export const TransactionHistory: FC<TransactionHistoryProps> = observer(
           <div key={index}>
             <TransactionHistoryElement {...item} />
             {clickedAccount?.transactions &&
-              index < clickedAccount?.transactions.length - 1 && <Divider />}
+              index < clickedAccount?.transactions?.length - 1 && <Divider />}
           </div>
         ))}
       </div>

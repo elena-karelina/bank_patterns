@@ -17,7 +17,7 @@ export const AccountItem: FC<IAccountItemProps> = observer(
     } = useStores();
 
     const handleClick = (): void => {
-      setClickedAccount(data);
+      setClickedAccount(data.id);
       navigate(`/details/${data.id}`);
     };
 

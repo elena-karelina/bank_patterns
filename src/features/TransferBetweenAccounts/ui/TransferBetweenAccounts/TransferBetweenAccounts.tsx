@@ -2,10 +2,15 @@ import { Button, Modal } from "antd";
 import { FC, useState } from "react";
 import { AccountInputForm } from "../AccountInputForm";
 import { AmountInputForm } from "../AmountInputForm";
+import { ITransferMoneyRates } from "@features/TransferBetweenAccounts/model";
 
 export const TransferBetweenAccounts: FC = () => {
   const [open, setOpen] = useState(false);
   const [isAccountForm, setIsAccountForm] = useState(true);
+  const [transferData, setTransferData] = useState<ITransferMoneyRates | null>(
+    null
+  );
+  const [accountTo, setAccountTo] = useState<string | null>(null);
 
   const showModal = () => {
     setOpen(true);
@@ -14,10 +19,13 @@ export const TransferBetweenAccounts: FC = () => {
   const hideModal = () => {
     setOpen(false);
     setIsAccountForm(true);
+    setTransferData(null);
   };
 
-  const handleSetForm = () => {
+  const handleSetForm = (data: ITransferMoneyRates, accountTo: string) => {
+    setTransferData(data);
     setIsAccountForm(false);
+    setAccountTo(accountTo);
   };
 
   return (
@@ -34,7 +42,11 @@ export const TransferBetweenAccounts: FC = () => {
         {isAccountForm ? (
           <AccountInputForm onSubmit={handleSetForm} />
         ) : (
-          <AmountInputForm />
+          <AmountInputForm
+            transferData={transferData}
+            accountTo={accountTo as string}
+            onSuccess={() => setOpen(false)}
+          />
         )}
       </Modal>
     </>

@@ -1,4 +1,3 @@
-import { ITransaction } from "@entities/Transaction/models";
 import { HttpError } from "@shared/api";
 
 export const fetchWithdrawal = async ({
@@ -7,7 +6,7 @@ export const fetchWithdrawal = async ({
 }: {
   id: string;
   amount: number;
-}): Promise<ITransaction> => {
+}): Promise<null> => {
   const url = `http://51.250.46.120:5001/core/transaction/${id}/withdrawal`;
   const token = localStorage.getItem("userToken");
   console.log(url, token);
@@ -28,8 +27,8 @@ export const fetchWithdrawal = async ({
     throw new HttpError(response.statusText, response.status);
   }
 
-  const data: { newWithdrawalTransaction: ITransaction } =
-    await response.json();
-  console.log(data.newWithdrawalTransaction);
-  return data.newWithdrawalTransaction;
+  // const data: { newWithdrawalTransaction: ITransaction } =
+  //   await response.json();
+  // console.log(data.newWithdrawalTransaction);
+  return null;
 };

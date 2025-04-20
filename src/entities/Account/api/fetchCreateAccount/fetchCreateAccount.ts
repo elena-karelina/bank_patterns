@@ -1,8 +1,12 @@
 import { IAccount } from "@entities/Account/models";
 import { IAccountListResult } from "./fetchCreateAccount.interfaces";
 import { HttpError } from "@shared/api";
+import { ECurrencies } from "@shared/types";
 
-export const fetchCreateAccount = async (name: string): Promise<IAccount> => {
+export const fetchCreateAccount = async (
+  name: string,
+  currency: ECurrencies
+): Promise<IAccount> => {
   const url = `http://51.250.46.120:5001/core/account`;
   const token = localStorage.getItem("userToken");
   console.log("userToken", token);
@@ -16,6 +20,7 @@ export const fetchCreateAccount = async (name: string): Promise<IAccount> => {
     },
     body: JSON.stringify({
       name,
+      currency,
     }),
   });
 

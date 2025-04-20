@@ -8,11 +8,11 @@ import {
 } from "./TransactionHistoryElement.styles";
 import { ITransaction, transactionText } from "@entities/Transaction/models";
 import { plusTransaction } from "./TransactionHistoryElement.constants";
+import { currencySymbols } from "@shared/types";
 
 export const TransactionHistoryElement: FC<ITransaction> = (data) => {
-  const { amount, type, performedAt } = data;
-  console.log(amount, type, performedAt);
-  console.log(transactionText[type]);
+  const { amount, type, performedAt, currency } = data;
+  const symbol = currencySymbols[currency];
   const date = new Date(performedAt);
 
   const year = date.getFullYear();
@@ -37,9 +37,13 @@ export const TransactionHistoryElement: FC<ITransaction> = (data) => {
       <Row>
         <div>{transactionText[type]}</div>
         {plus ? (
-          <Deposit>+ {amount} P</Deposit>
+          <Deposit>
+            + {amount} {symbol}
+          </Deposit>
         ) : (
-          <WithdrawalAmount>- {amount} P</WithdrawalAmount>
+          <WithdrawalAmount>
+            - {amount} {symbol}
+          </WithdrawalAmount>
         )}
       </Row>
       <Data>

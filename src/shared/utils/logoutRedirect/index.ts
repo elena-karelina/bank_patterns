@@ -1,0 +1,1 @@
+export { logoutRedirect } from "./logoutRedirect";

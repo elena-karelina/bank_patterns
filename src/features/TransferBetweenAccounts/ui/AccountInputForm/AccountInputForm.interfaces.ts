@@ -1,3 +1,5 @@
+import { ITransferMoneyRates } from "@features/TransferBetweenAccounts/model";
+
 export interface IAccountInputFormProps {
-  onSubmit: () => void;
+  onSubmit: (data: ITransferMoneyRates, accountTo: string) => void;
 }
