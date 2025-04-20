@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, FormProps, Input, Modal } from "antd";
+import { Button, Checkbox, Form, FormProps, Input, Modal } from "antd";
 import { FC } from "react";
 import { useStores } from "@shared/contexts/stores";
 import { useCreateUser } from "@entities/User/hooks/useCreateUser/useCreateUser";
@@ -25,12 +25,20 @@ export const CreateEmployee: FC = () => {
     password: string;
     phoneNumber: string;
     email: string;
+    isUserRole: string;
   };
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
+
+    const roles = [roleId[EUserRole.Employee]];
+
+    if (values.isUserRole) {
+      roles.push(roleId[EUserRole.Client]);
+    }
+
     mutate(
-      { ...values, roles: [roleId[EUserRole.Employee]] },
+      { ...values, roles },
       {
         onSuccess: (user) => {
           console.log("Данные успешно отправлены");
@@ -92,6 +100,10 @@ export const CreateEmployee: FC = () => {
             rules={[{ required: true, message: "Введите почту" }]}
           >
             <Input />
+          </Form.Item>
+
+          <Form.Item<FieldType> valuePropName="checked" name="isUserRole">
+            <Checkbox>Добавить роль пользователя</Checkbox>
           </Form.Item>
 
           <Form.Item label={null}>

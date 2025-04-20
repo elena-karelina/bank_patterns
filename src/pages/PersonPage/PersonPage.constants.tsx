@@ -1,8 +1,5 @@
 import { TabsProps } from "antd";
-import {
-  AccountItemsListStyled,
-  CreditItemsListStyled,
-} from "./PersonPage.styles";
+import { AccountItemsListStyled, CreditPageStyled } from "./PersonPage.styles";
 import { BlockWrapper } from "@shared/ui";
 
 export const TEXTS = {
@@ -24,7 +21,7 @@ export const segments: TabsProps["items"] = [
     key: "2",
     children: (
       <BlockWrapper>
-        <CreditItemsListStyled />
+        <CreditPageStyled />
       </BlockWrapper>
     ),
   },

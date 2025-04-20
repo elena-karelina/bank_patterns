@@ -22,7 +22,6 @@ export const PersonPage: FC = observer(() => {
   return (
     <PageLayout
       title={` ${segmentName + TEXTS.title + clickedPerson?.fullName}`}
-      withNavigationHome={true}
     >
       <Content>
         <TabsStyled

@@ -1,5 +1,6 @@
 import { ITransaction } from "@entities/Transaction/models";
 import { ITransactionHistory } from "./fetchTransactionHistory.interfaces";
+import { HttpError } from "@shared/api";
 
 export const fetchTransactionHistory = async (
   id: string
@@ -17,7 +18,7 @@ export const fetchTransactionHistory = async (
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: ITransactionHistory = await response.json();

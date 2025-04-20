@@ -25,7 +25,7 @@ export const CreditDetailsPage: FC = observer(() => {
   if (status === "pending") {
     console.log(status);
     return (
-      <PageLayout title={`Информация о кредите`} withNavigationHome={true}>
+      <PageLayout title={`Информация о кредите`}>
         <ItemShimmer />
       </PageLayout>
     );
@@ -33,7 +33,7 @@ export const CreditDetailsPage: FC = observer(() => {
   console.log(data?.payments);
 
   return (
-    <PageLayout title={`Информация о кредите`} withNavigationHome={true}>
+    <PageLayout title={`Информация о кредите`}>
       <Title level={4}>Ставка: {data?.rate.yearlyRate}%</Title>
       <Title level={4}>Осталось заплатить :</Title>
       <div>

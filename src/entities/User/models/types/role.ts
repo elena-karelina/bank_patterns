@@ -4,6 +4,6 @@ export enum EUserRole {
 }
 
 export const roleId: Record<EUserRole, string> = {
-  [EUserRole.Client]: "1781ec9b-0ef2-4ac9-90ec-b5d409600007",
-  [EUserRole.Employee]: "76889a12-b034-4524-8517-22a621bf0945",
+  [EUserRole.Client]: "6c9d10bd-244a-45ff-9773-876a0e8ce76c",
+  [EUserRole.Employee]: "b29062ad-dcb4-4f7f-87a8-91780496054a",
 };

@@ -11,9 +11,11 @@ import {
   ITransaction,
   transactionText,
 } from "@entities/Transaction/models";
+import { currencySymbols } from "@shared/types";
 
 export const TransactionHistoryElement: FC<ITransaction> = (data) => {
-  const { amount, type, performedAt } = data;
+  const { amount, type, performedAt, currency } = data;
+  const symbol = currencySymbols[currency];
   const date = new Date(performedAt);
 
   const year = date.getFullYear();
@@ -32,16 +34,22 @@ export const TransactionHistoryElement: FC<ITransaction> = (data) => {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
   const plus =
-    type === ETransactionType.Deposit || type === ETransactionType.LoanAccrual;
+    type === ETransactionType.Deposit ||
+    type === ETransactionType.LoanAccrual ||
+    type === ETransactionType.TransferTo;
 
   return (
     <Wrapper>
       <Row>
         <div>{transactionText[type]}</div>
         {plus ? (
-          <Deposit>+ {amount} P</Deposit>
+          <Deposit>
+            + {amount} {symbol}
+          </Deposit>
         ) : (
-          <WithdrawalAmount>- {amount} P</WithdrawalAmount>
+          <WithdrawalAmount>
+            - {amount} {symbol}
+          </WithdrawalAmount>
         )}
       </Row>
       <Data>

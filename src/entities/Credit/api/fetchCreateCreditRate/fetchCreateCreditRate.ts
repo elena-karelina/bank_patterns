@@ -1,4 +1,5 @@
 import { ICreateCredit } from "@entities/Credit/model";
+import { HttpError } from "@shared/api";
 
 export const fetchCreateCreditRate = async ({
   name,
@@ -21,7 +22,7 @@ export const fetchCreateCreditRate = async ({
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const id: string = await response.json();

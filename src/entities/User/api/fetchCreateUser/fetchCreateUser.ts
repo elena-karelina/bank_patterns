@@ -1,4 +1,5 @@
 import { ICreateUserOptions, IUser } from "@entities/User/models";
+import { HttpError } from "@shared/api";
 
 export const fetchCreateUser = async (
   options: ICreateUserOptions
@@ -21,7 +22,7 @@ export const fetchCreateUser = async (
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: IUser = await response.json();

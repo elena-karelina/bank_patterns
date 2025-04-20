@@ -1,6 +1,6 @@
 import { fetchTransactionHistory } from "@entities/Account/api";
-import { EQueryKeys } from "@shared/api";
-import { ITransaction } from "@shared/types";
+import { ITransaction } from "@entities/Transaction/models";
+import { EQueryKeys, handleError } from "@shared/api";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 export const useTransactionHistory = (
@@ -9,4 +9,5 @@ export const useTransactionHistory = (
   useQuery({
     queryFn: () => fetchTransactionHistory(id),
     queryKey: [EQueryKeys.TransactionHistory, id],
+    throwOnError: (error) => handleError(error),
   });

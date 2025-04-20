@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AccountItemsList } from "@widgets/AccountItemsList/ui";
 import { Tabs } from "antd";
-import { CreditItemsList } from "@widgets/CreditItemsList/ui";
+import { CreditPage } from "@pages/CreditPage";
 
 export const AccountItemsListStyled = styled(AccountItemsList)`
   width: 100%;
@@ -19,6 +19,6 @@ export const TabsStyled = styled(Tabs)`
   width: calc(100% + 137px);
 `;
 
-export const CreditItemsListStyled = styled(CreditItemsList)`
+export const CreditPageStyled = styled(CreditPage)`
   width: 100%;
 `;

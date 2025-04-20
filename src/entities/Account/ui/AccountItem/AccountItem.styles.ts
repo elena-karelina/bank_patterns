@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
 
   &:hover {
-    background-color: #ededed;
+    background-color: var(--hover-color);
   }
 `;
 

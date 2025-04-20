@@ -10,4 +10,6 @@ export enum EQueryKeys {
   TransactionHistory = "transaction-history",
   CreditList = "credit-list",
   CreditDetails = "credit-details",
+  CreditRating = "credit-rating",
+  GetTheme = "get-theme",
 }

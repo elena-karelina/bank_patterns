@@ -1,5 +1,6 @@
 import { roleId } from "@entities/User/models/types/index";
 import { IUserList, IUserResult } from "./fetchUserList.interfaces";
+import { HttpError } from "@shared/api";
 
 export const fetchUserList = async ({
   role,
@@ -19,7 +20,7 @@ export const fetchUserList = async ({
   });
 
   if (!response.ok) {
-    throw new Error("error");
+    throw new HttpError(response.statusText, response.status);
   }
 
   const data: IUserResult[] = await response.json();

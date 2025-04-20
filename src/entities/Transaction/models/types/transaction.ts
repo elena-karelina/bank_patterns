@@ -1,8 +1,11 @@
+import { ECurrencies } from "@shared/types";
+
 export interface ITransaction {
   id: string;
   amount: number;
   type: ETransactionType;
   performedAt: string;
+  currency: ECurrencies;
 }
 export interface IPayment {
   id: string;
@@ -13,6 +16,8 @@ export interface IPayment {
 
 export enum ETransactionType {
   Deposit = "Deposit",
+  TransferTo = "TransferTo",
+  TransferFrom = "TransferFrom",
   Withdrawal = "Withdrawal",
   LoanAccrual = "LoanAccrual",
   LoanPayment = "LoanPayment",
@@ -28,4 +33,6 @@ export const transactionText: Record<ETransactionType, string> = {
   [ETransactionType.Payed]: "Списание по кредиту",
   [ETransactionType.Overdue]: "Списание просрочено",
   [ETransactionType.NotYet]: "Списание ожидается",
+  [ETransactionType.TransferTo]: "Поступление",
+  [ETransactionType.TransferFrom]: "Перевод",
 };

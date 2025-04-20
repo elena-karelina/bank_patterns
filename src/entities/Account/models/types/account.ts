@@ -1,4 +1,5 @@
-import { ITransaction } from "@shared/types";
+import { ITransaction } from "@entities/Transaction/models";
+import { ECurrencies } from "@shared/types";
 
 export interface IAccount {
   id: string;
@@ -7,5 +8,6 @@ export interface IAccount {
   createdDate: string;
   status: string;
   balance: number;
+  currency: ECurrencies;
   transactions?: ITransaction[];
 }
