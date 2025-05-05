@@ -4,3 +4,9 @@ export enum EAppStage {
   PersonPage = "/person",
   AccountDetailsPage = "/details",
 }
+
+export interface CircuitBreakerControls {
+  canRequest: () => boolean;
+  recordSuccess: () => void;
+  recordFailure: () => void;
+}

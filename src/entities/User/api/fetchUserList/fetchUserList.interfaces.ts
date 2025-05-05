@@ -1,7 +1,9 @@
 import { EUserRole } from "@entities/User/models/types/index";
+import { CircuitBreakerControls } from "@shared/types";
 
 export interface IUserList {
   role: EUserRole;
+  circuitBreaker: CircuitBreakerControls;
 }
 export interface IUserResult {
   id: string;
