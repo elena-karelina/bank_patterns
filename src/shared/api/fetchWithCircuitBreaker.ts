@@ -1,4 +1,5 @@
 import { CircuitBreakerControls } from "@shared/types";
+import { HttpError } from "./error";
 
 export const fetchWithCircuitBreaker = async (
   input: RequestInfo,
@@ -8,9 +9,8 @@ export const fetchWithCircuitBreaker = async (
   const { canRequest, recordSuccess, recordFailure } = circuitBreaker;
 
   if (!canRequest()) {
-    throw new Error(
-      "Circuit breaker is open — requests are temporarily blocked"
-    );
+    console.log("Circuit breaker is open");
+    throw new HttpError("Circuit breaker is open", 500);
   }
 
   try {
