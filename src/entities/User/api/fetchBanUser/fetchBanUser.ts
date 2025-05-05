@@ -10,6 +10,7 @@ export const fetchBanUser = async (id: string): Promise<null> => {
       Accept: "text/plain",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Idempotency-Key": id,
     },
   });
 

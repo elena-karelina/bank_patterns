@@ -14,6 +14,7 @@ export const fetchCreateCreditRate = async ({
       Accept: "text/plain",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Idempotency-Key": `${name}-${yearlyRate}`,
     },
     body: JSON.stringify({
       name,

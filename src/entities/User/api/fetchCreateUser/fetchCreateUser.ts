@@ -15,6 +15,7 @@ export const fetchCreateUser = async (
       Accept: "text/plain",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Idempotency-Key": `${options.email}-${options.phoneNumber}`,
     },
     body: JSON.stringify({
       ...options,
