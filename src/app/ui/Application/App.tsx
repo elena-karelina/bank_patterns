@@ -7,6 +7,7 @@ import { StoresProvider } from "@shared/contexts/stores";
 import { CreditStore } from "@entities/Credit/model/store";
 import { ThemeStore } from "@entities/Theme/models";
 import { UserStore } from "@entities/User/models";
+import { CircuitBreakerProvider } from "@shared/contexts";
 
 export const App = () => {
   const queryClient = new QueryClient();
@@ -25,9 +26,11 @@ export const App = () => {
   return (
     <StoresProvider stores={stores}>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename="/">
-          <Page />
-        </BrowserRouter>
+        <CircuitBreakerProvider>
+          <BrowserRouter basename="/">
+            <Page />
+          </BrowserRouter>
+        </CircuitBreakerProvider>
       </QueryClientProvider>
     </StoresProvider>
   );

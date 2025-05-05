@@ -1,3 +1,5 @@
-export enum EAppStage {
-  ChtoTo,
+export interface CircuitBreakerControls {
+  canRequest: () => boolean;
+  recordSuccess: () => void;
+  recordFailure: () => void;
 }

@@ -1,17 +1,24 @@
 import { ICredit } from "@entities/Credit/model";
-import { HttpError } from "@shared/api";
+import { fetchWithCircuitBreaker, HttpError } from "@shared/api";
+import { CircuitBreakerControls } from "@shared/types";
 
-export const fetchCreditList = async (): Promise<ICredit[]> => {
+export const fetchCreditList = async (
+  circuitBreaker: CircuitBreakerControls
+): Promise<ICredit[]> => {
   const url = `http://51.250.46.120:5002/api/loan/my-history`;
   const token = localStorage.getItem("userToken");
 
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Accept: "text/plain",
-      Authorization: `Bearer ${token}`,
+  const response = await fetchWithCircuitBreaker(
+    url,
+    {
+      method: "GET",
+      headers: {
+        Accept: "text/plain",
+        Authorization: `Bearer ${token}`,
+      },
     },
-  });
+    circuitBreaker
+  );
 
   if (!response.ok) {
     throw new HttpError(response.statusText, response.status);

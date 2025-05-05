@@ -9,9 +9,9 @@ export const AccountItemsList: FC<{ className?: string }> = observer(
     const {
       accountStore: { visibleAccountList },
     } = useStores();
-    visibleAccountList?.map((item) => {
-      console.log(item.name, item.status);
-    });
+    // visibleAccountList?.map((item) => {
+    //   console.log(item.name, item.status);
+    // });
 
     return (
       <div className={className}>

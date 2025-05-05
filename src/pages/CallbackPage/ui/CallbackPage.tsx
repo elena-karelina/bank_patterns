@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const CallbackPage: FC = () => {
   const navigate = useNavigate();
+
   useEffect(() => {
     completeSignIn()
       .then(() => {

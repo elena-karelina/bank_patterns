@@ -1,7 +1,7 @@
 import { loginRedirect } from "@shared/utils";
 
 export const handleError = (error: Error & { status?: number }): boolean => {
-  console.log(error.message);
+  console.log(error.message, error.status);
 
   if (error.status === 401) {
     console.log("handleError 401");

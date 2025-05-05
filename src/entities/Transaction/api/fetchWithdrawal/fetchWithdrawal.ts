@@ -1,4 +1,5 @@
 import { HttpError } from "@shared/api";
+import { v4 } from "uuid";
 
 export const fetchWithdrawal = async ({
   id,
@@ -9,7 +10,8 @@ export const fetchWithdrawal = async ({
 }): Promise<null> => {
   const url = `http://51.250.46.120:5001/core/transaction/${id}/withdrawal`;
   const token = localStorage.getItem("userToken");
-  console.log(url, token);
+
+  const idempotencyKey = v4();
 
   const response = await fetch(url, {
     method: "POST",
@@ -17,6 +19,7 @@ export const fetchWithdrawal = async ({
       Accept: "text/plain",
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
+      "Idempotency-Key": idempotencyKey,
     },
     body: JSON.stringify({
       amount,
@@ -27,8 +30,5 @@ export const fetchWithdrawal = async ({
     throw new HttpError(response.statusText, response.status);
   }
 
-  // const data: { newWithdrawalTransaction: ITransaction } =
-  //   await response.json();
-  // console.log(data.newWithdrawalTransaction);
   return null;
 };

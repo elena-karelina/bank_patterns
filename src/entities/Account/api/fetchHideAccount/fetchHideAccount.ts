@@ -1,4 +1,5 @@
 import { HttpError } from "@shared/api";
+import { v4 } from "uuid";
 
 export const fetchHideAccount = async (
   id: string,
@@ -7,7 +8,8 @@ export const fetchHideAccount = async (
   const action = isHide ? "hide" : "unhide";
   const url = `http://51.250.46.120:5004/api/hidden-accounts/${action}`;
   const token = localStorage.getItem("userToken");
-  console.log("userToken", token);
+
+  const idempotencyKey = v4();
 
   const response = await fetch(url, {
     method: "POST",
@@ -15,11 +17,13 @@ export const fetchHideAccount = async (
       Accept: "text/plain",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Idempotency-Key": idempotencyKey,
     },
     body: JSON.stringify([id]),
   });
 
   if (!response.ok) {
+    console.log(response.status);
     throw new HttpError(response.statusText, response.status);
   }
 

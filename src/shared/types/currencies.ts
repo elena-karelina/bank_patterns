@@ -5,7 +5,7 @@ export enum ECurrencies {
 }
 
 export const currencySymbols = {
-  [ECurrencies.RUB]: "p",
+  [ECurrencies.RUB]: "₽",
   [ECurrencies.EUR]: "€",
   [ECurrencies.USD]: "$",
 };

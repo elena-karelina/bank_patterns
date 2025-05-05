@@ -2,6 +2,7 @@ import { IAccount } from "@entities/Account/models";
 import { IAccountListResult } from "./fetchCreateAccount.interfaces";
 import { HttpError } from "@shared/api";
 import { ECurrencies } from "@shared/types";
+import { v4 } from "uuid";
 
 export const fetchCreateAccount = async (
   name: string,
@@ -9,7 +10,8 @@ export const fetchCreateAccount = async (
 ): Promise<IAccount> => {
   const url = `http://51.250.46.120:5001/core/account`;
   const token = localStorage.getItem("userToken");
-  console.log("userToken", token);
+
+  const idempotencyKey = v4();
 
   const response = await fetch(url, {
     method: "POST",
@@ -17,6 +19,7 @@ export const fetchCreateAccount = async (
       Accept: "text/plain",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Idempotency-Key": idempotencyKey,
     },
     body: JSON.stringify({
       name,

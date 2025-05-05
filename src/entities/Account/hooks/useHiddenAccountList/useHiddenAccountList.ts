@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 
-import { EQueryKeys, handleError } from "@shared/api";
+import { EQueryKeys, handleError, HttpError } from "@shared/api";
 import { fetchHiddenAccountList } from "@entities/Account/api";
 
 export const useHiddenAccountList = (): UseQueryResult<string[]> =>
@@ -8,4 +8,10 @@ export const useHiddenAccountList = (): UseQueryResult<string[]> =>
     queryFn: () => fetchHiddenAccountList(),
     queryKey: [EQueryKeys.HiddenAccontList],
     throwOnError: (error) => handleError(error),
+    retry: (_, error: Error) => {
+      if (error instanceof HttpError && error.status === 500) {
+        return true;
+      }
+      return false;
+    },
   });

@@ -35,7 +35,6 @@ export const Page: FC = observer(() => {
           <Route path="/credit/:id" element={<CreditDetailsPage />} />
         </Routes>
         <Image src={meerkat} />
-        {/* <ThemeImage onClick={handleThemeClick} /> */}
       </Wrapper>
     </ConfigProvider>
   );
